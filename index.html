@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="mb-8">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold text-gray-800">Task Management Dashboard</h1>
+                <div class="text-sm text-gray-500">
+                    <i class="fas fa-cloud-upload-alt mr-1"></i> Автосохранение
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-4 items-center">
+                <button id="addBoardBtn" class="flex items-center px-5 py-2.5 rounded-xl text-white font-medium">
+                    <i class="fas fa-plus mr-2"></i>Новая доска
+                </button>
+                <div class="hidden md:flex items-center ml-auto text-gray-500 text-sm">
+                    <span class="mr-3"><i class="far fa-question-circle mr-1"></i> Перетащите задачи между досками</span>
+                </div>
+            </div>
+        </header>
+        
+        <main class="flex flex-wrap gap-6" id="boardsContainer">
+        </main>
+    </div>
+
+    <template id="boardTemplate">
+        <div class="board w-full md:w-80 flex flex-col max-h-[80vh]">
+            <div class="p-4 border-b flex justify-between items-center rounded-t-lg">
+                <h3 class="board-title text-lg font-medium text-gray-700 truncate" contenteditable="true"></h3>
+                <div class="flex gap-2">
+                    <button class="add-task-btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button class="delete-board-btn">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="tasks-container flex-1 overflow-y-auto"></div>
+        </div>
+    </template>
+
+    <template id="taskTemplate">
+        <div class="task p-3 mb-2 cursor-move">
+            <div class="flex justify-between items-start mb-2">
+                <h4 class="task-title font-medium text-gray-800 truncate" contenteditable="true"></h4>
+                <button class="delete-task-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <p class="task-description text-sm text-gray-600" contenteditable="true"></p>
+        </div>
+    </template>
+
+    <script src="app.js"></script>
+</body>
+</html> 
